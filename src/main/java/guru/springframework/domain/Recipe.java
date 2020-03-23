@@ -19,6 +19,8 @@ public class Recipe {
   private String directions;
   @OneToOne(fetch = FetchType.EAGER)
   private UnitOfMeasure unitOfMeasure;
+  @Enumerated(value = EnumType.STRING)
+  private Difficulty difficulty;
 
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
   private Set<Ingredient> ingredients;
@@ -27,6 +29,22 @@ public class Recipe {
 
   @OneToOne(cascade = CascadeType.ALL)
   private Notes notes;
+
+  public Difficulty getDifficulty() {
+    return difficulty;
+  }
+
+  public void setDifficulty(Difficulty difficulty) {
+    this.difficulty = difficulty;
+  }
+
+  public UnitOfMeasure getUnitOfMeasure() {
+    return unitOfMeasure;
+  }
+
+  public void setUnitOfMeasure(UnitOfMeasure unitOfMeasure) {
+    this.unitOfMeasure = unitOfMeasure;
+  }
 
   public Long getId() {
     return id;
