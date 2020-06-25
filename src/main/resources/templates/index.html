@@ -32,6 +32,11 @@
             <table class="table table-hover">
 
                         <thead>
+                        <tr th:remove="all">
+                            <th class="card-text">ID</th>
+                            <th class="card-text">Description</th>
+                            <th class="card-text">Mostrar</th>
+                        </tr>
                             <tr>
                                 <th class="card-text">ID</th>
                                 <th class="card-text">Description</th>
@@ -45,6 +50,8 @@
                                 <td th:text="${recipe.id}"></td>
                                 <td th:text="${recipe.description}"></td>
                                 <td><a href="#" th:href="@{'/recipe/show/'+${recipe.id}}">View</a></td>
+                                <td><a href="#" th:href="@{'/recipe/'+${recipe.id}+'/update'}">Update</a></td>
+                                <td><a href="#" th:href="@{'/recipe/'+${recipe.id}+'/delete'}">Delete</a></td>
                             </tr>
                         </tbody>
 

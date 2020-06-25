@@ -86,7 +86,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
     Category catVet = vegetarian.get();
     Category catMex = mexican.get();
     Recipe spinachFrittata = new Recipe();
-    spinachFrittata.setDescription("Quick and easy spinach frittata recipe with eggs, fresh spinach, onions, garlic, Parmesan and goat cheese, and sun-dried tomatoes.");
+    spinachFrittata.setDescription("Quick and easy spinach frittata recipe");
     spinachFrittata.setCookTime(4);
     spinachFrittata.setPrepTime(12);
     spinachFrittata.setDifficulty(Difficulty.EASY);
@@ -116,6 +116,9 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
     spinachFrittata.addIngredient(new Ingredient("freshly ground pepper", new BigDecimal(1/4), uommTeaspoon));
     spinachFrittata.getCategories().add(catVet);
     spinachFrittata.getCategories().add(catMex);
+    spinachFrittata.setUrl("https://www.simplyrecipes.com/recipes/spinach_frittata/");
+    spinachFrittata.setServing(4);
+    spinachFrittata.setSource("simple recipe");
     recipes.add(spinachFrittata);
     log.debug("I added the first recipe");
 
@@ -174,7 +177,8 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
     tacosRecipe.addIngredient(new Ingredient("Roughly chopped cilantro", new BigDecimal(4), dashUom));
     tacosRecipe.addIngredient(new Ingredient("cup sour cream thinned with 1/4 cup milk", new BigDecimal(4), cupUom));
     tacosRecipe.addIngredient(new Ingredient("lime, cut into wedges", new BigDecimal(4), dashUom));
-
+    tacosRecipe.setUrl("https://www.simplyrecipes.com/recipes/spicy_grilled_chicken_tacos/#ixzz4jvtrAnNm");
+    tacosRecipe.setSource("simple recipe");
     tacosRecipe.getCategories().add(catVet);
     tacosRecipe.getCategories().add(catMex);
 
