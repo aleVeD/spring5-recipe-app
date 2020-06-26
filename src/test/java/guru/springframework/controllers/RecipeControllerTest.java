@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -36,7 +37,7 @@ class RecipeControllerTest {
   @Test
   void showById() throws Exception {
     Recipe recipe = new Recipe();
-    recipe.setId(23L);
+    recipe.setId(1L);
 
     when(recipeService.findById(anyLong())).thenReturn(recipe);
     mockMvc.perform(MockMvcRequestBuilders.get("/recipe/show/1"))
@@ -85,4 +86,6 @@ class RecipeControllerTest {
         .andExpect(view().name("redirect:/"));
         verify(recipeService, times(1)).deleteById(1L);
     }
+    
+
 }
