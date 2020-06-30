@@ -20,9 +20,9 @@
 <div class="container-fluid" style="margin-top: 20px">
     <div class="row">
         <div class="col-md-6 offset-md-3">
-            <form  th:object="${recipe}" th:action="@{recipe/}"  method="post">
+            <form  th:object="${recipe}" th:action="@{/recipe/}"  method="post">
                 <input type="hidden" th:field="*{id}"/>
-                <div class="card-group">
+
                     <div class="card">
                         <div class="card-header bg-primary text-white">
                             <h1 class="card-title">Edit Recipe Information</h1>
@@ -81,10 +81,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+
 
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header bg-primary text-white">
                             <div class="row">
                                 <div class="col-md-11 ">
                                     <h1 class="card-title">Ingredients</h1>
@@ -103,6 +103,7 @@
                                         <li th:remove="all">asdf</li>
                                         <li th:each="ingredient : ${recipe.ingredients}"
                                             th:text="${(ingredient.getAmount() +
+
                                         ' - ' + ingredient.getDescription())}">1 Teaspoon of Sugar
                                         </li>
                                     </ul>
@@ -111,7 +112,7 @@
                         </div>
                     </div>
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header bg-primary text-white">
                             <h1 class="card-title">Directions</h1>
                         </div>
                         <div class="panel-body">
@@ -121,8 +122,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
+                    <div class="card ">
+                        <div class="card-header bg-primary text-white">
                             <h1 class="card-title">Notes</h1>
                         </div>
                         <div class="card-body">
@@ -134,7 +135,8 @@
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
+
+
             </form>
         </div>
     </div>
