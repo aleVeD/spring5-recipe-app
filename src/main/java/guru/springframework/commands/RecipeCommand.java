@@ -19,7 +19,7 @@ public class RecipeCommand {
     private String description;
     private Integer prepTime;
     private Integer cookTime;
-    private Integer servings;
+    private Integer ser;
     private String source;
     private String url;
     private String directions;
@@ -27,4 +27,5 @@ public class RecipeCommand {
     private Difficulty difficulty;
     private NotesCommand notes;
     private Set<CategoryCommand> categories = new HashSet<>();
+
 }

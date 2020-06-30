@@ -181,7 +181,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
     tacosRecipe.setSource("simple recipe");
     tacosRecipe.getCategories().add(catVet);
     tacosRecipe.getCategories().add(catMex);
-
+    tacosRecipe.setServing(3);
     recipes.add(tacosRecipe);
     return recipes;
   }

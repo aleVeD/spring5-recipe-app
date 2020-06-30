@@ -4,16 +4,16 @@ import guru.springframework.commands.IngredientCommand;
 import guru.springframework.commands.RecipeCommand;
 import guru.springframework.services.IngredientService;
 import guru.springframework.services.RecipeService;
-import org.junit.Before;
+import guru.springframework.services.UnitOfMeasureService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -21,18 +21,23 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class IngredientControllerTest {
 
   @Mock
+  IngredientService ingredientService;
+
+  @Mock
+  UnitOfMeasureService unitOfMeasureService;
+
+  @Mock
   RecipeService recipeService;
 
   IngredientController controller;
-  MockMvc mockMvc;
-  @Mock
-  IngredientService ingredientService;
 
-  @Before
+  MockMvc mockMvc;
+
+  @BeforeEach
   public void setUp() throws Exception {
     MockitoAnnotations.initMocks(this);
 
-    controller = new IngredientController( recipeService, ingredientService);
+    controller = new IngredientController(ingredientService, recipeService, unitOfMeasureService);
     mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
   }
 
@@ -40,9 +45,6 @@ class IngredientControllerTest {
   public void testListIngredients() throws Exception {
     //given
     RecipeCommand recipeCommand = new RecipeCommand();
-    System.out.println(recipeCommand);
-    recipeCommand.setId(2L);
-    System.out.println(recipeService.findCommandById(anyLong()).getId());
     when(recipeService.findCommandById(anyLong())).thenReturn(recipeCommand);
 
     //when

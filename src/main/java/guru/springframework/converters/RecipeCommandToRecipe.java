@@ -15,6 +15,7 @@ import java.util.Objects;
 @Component
 public class RecipeCommandToRecipe implements Converter<RecipeCommand, Recipe> {
 
+
     private final CategoryCommandToCategory categoryConveter;
     private final IngredientCommandToIngredient ingredientConverter;
     private final NotesCommandToNotes notesConverter;
@@ -41,11 +42,10 @@ public class RecipeCommandToRecipe implements Converter<RecipeCommand, Recipe> {
         recipe.setDescription(source.getDescription());
         recipe.setDifficulty(source.getDifficulty());
         recipe.setDirections(source.getDirections());
-        recipe.setServing(source.getServings());
+        recipe.setServing(source.getSer());
         recipe.setSource(source.getSource());
         recipe.setUrl(source.getUrl());
         recipe.setNotes(notesConverter.convert(source.getNotes()));
-
 
         if (source.getCategories() != null && source.getCategories().size() > 0){
             source.getCategories()
